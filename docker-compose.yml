@@ -1,0 +1,95 @@
+version: "3.9"
+
+services:
+  # MySQL database cho IAM
+  iam-db:
+    image: mysql:8.0
+    container_name: iam-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: iamdb
+      MYSQL_USER: iamuser
+      MYSQL_PASSWORD: iampass
+    ports:
+      - "3307:3306"
+    networks:
+      - backend-network
+    volumes:
+      - iam-db-data:/var/lib/mysql
+
+  # Neo4j database
+  neo4j:
+    image: neo4j:5
+    container_name: neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: neo4j/Test1234
+    networks:
+      - backend-network
+    volumes:
+      - neo4j-data:/data
+    healthcheck:
+      test: [ "CMD", "cypher-shell", "-u", "neo4j", "-p", "Test1234", "RETURN 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+
+  redis:
+    image: redis:7.0
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - backend-network
+
+  #kafka
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  userinfo-service:
+    build:
+      context: ./userInfo-service
+      dockerfile: Dockerfile
+    container_name: userinfo-service
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    ports:
+      - "8081:8081"
+    restart: unless-stopped
+    networks:
+      - backend-network
+    environment:
+      SPRING_NEO4J_URI: bolt://neo4j:7687
+      SPRING_NEO4J_AUTHENTICATION_USERNAME: neo4j
+      SPRING_NEO4J_AUTHENTICATION_PASSWORD: Test1234
+      SERVER_PORT: 8081
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092  # <-- sửa ở đây
+
+networks:
+  backend-network:
+    driver: bridge
+
+volumes:
+  iam-db-data:
+  neo4j-data:
