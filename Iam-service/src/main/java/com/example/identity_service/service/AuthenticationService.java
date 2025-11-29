@@ -4,11 +4,20 @@ import java.text.ParseException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.Map;
 import java.util.StringJoiner;
 import java.util.UUID;
 
+import com.example.common.enums.Channel;
+import com.example.common.enums.KafkaTopic;
+import com.example.common.enums.TemplateCode;
+import com.example.common.event.SendNotificationEvent;
+import com.example.identity_service.dto.response.UserProfileResponse;
+import com.example.identity_service.repository.httpclient.ProfileClient;
+import com.example.identity_service.util.SecurityContextUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -45,15 +54,21 @@ public class AuthenticationService {
     UserRepository userRepository;
     InvalidatedTokenRepository invalidatedTokenRepository;
     RedisTemplate<String, Object> redisTemplate;
+    ProfileClient profileClient;
+    KafkaTemplate<String, Object> kafkaTemplate;
 
     public AuthenticationService(
             UserRepository userRepository,
             InvalidatedTokenRepository invalidatedTokenRepository,
-            RedisTemplate<String, Object> redisTemplate
+            RedisTemplate<String, Object> redisTemplate,
+            ProfileClient profileClient,
+            KafkaTemplate<String, Object> kafkaTemplate
     ) {
         this.userRepository = userRepository;
         this.invalidatedTokenRepository = invalidatedTokenRepository;
         this.redisTemplate = redisTemplate;
+        this.profileClient = profileClient;
+        this.kafkaTemplate = kafkaTemplate;
         System.out.println("AuthenticationService created with RedisTemplate: " + redisTemplate);
     }
 
@@ -106,6 +121,19 @@ public class AuthenticationService {
         System.out.println("Raw password: " + request.getPassword());
         System.out.println("Encoded password from DB: " + user.getPassword());
         System.out.println("Matches: " + passwordEncoder.matches(request.getPassword(), user.getPassword()));
+
+        UserProfileResponse userProfileResponse = profileClient.getProfile(user.getId());
+
+        Map<String, Object> params = SecurityContextUtils.getSecurityContextMap();
+        params.put("username", user.getUsername());
+        params.put("email", userProfileResponse.getEmail());
+        SendNotificationEvent mailAlert = SendNotificationEvent.builder()
+                .channel(Channel.EMAIL.name())
+                .recipient(userProfileResponse.getEmail())
+                .templateCode(TemplateCode.LOGIN_ALERT)
+                .param(params)
+                .build();
+        kafkaTemplate.send(KafkaTopic.SEND_NOTIFICATION_GROUP.getTopicName(), mailAlert);
 
         return AuthenticationResponse.builder()
                 .token(accessToken.token)

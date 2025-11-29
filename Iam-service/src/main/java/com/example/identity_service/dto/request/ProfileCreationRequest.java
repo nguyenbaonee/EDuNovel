@@ -13,6 +13,7 @@ import lombok.experimental.FieldDefaults;
 public class ProfileCreationRequest {
     String userId;
     String firstName;
+    String email;
     String lastName;
     LocalDate dob;
     String city;

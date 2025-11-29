@@ -2,7 +2,15 @@ package com.example.identity_service.service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
+import com.example.common.enums.Channel;
+import com.example.common.enums.KafkaTopic;
+import com.example.common.enums.TemplateCode;
+import com.example.common.event.SendNotificationEvent;
+import com.example.identity_service.dto.response.UserProfileResponse;
+import com.example.identity_service.util.SecurityContextUtils;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -38,6 +46,7 @@ public class UserService {
     ProfileMapper profileMapper;
     PasswordEncoder passwordEncoder;
     ProfileClient profileClient;
+    KafkaTemplate<String, Object> kafkaTemplate;
 
     public UserResponse createUser(UserCreationRequest request) {
         if (userRepository.existsByUsername(request.getUsername())) throw new AppException(ErrorCode.USER_EXISTED);
@@ -54,7 +63,17 @@ public class UserService {
         var profileRequest = profileMapper.toProfileCreationRequest(request);
         profileRequest.setUserId(user.getId());
 
-        profileClient.createProfile(profileRequest);
+        UserProfileResponse userProfileResponse = profileClient.createProfile(profileRequest);
+        Map<String, Object> params = SecurityContextUtils.getSecurityContextMap();
+        params.put("username", user.getUsername());
+        params.put("email", userProfileResponse.getEmail());
+        SendNotificationEvent mailAlert = SendNotificationEvent.builder()
+                .channel(Channel.EMAIL.name())
+                .recipient(userProfileResponse.getEmail())
+                .templateCode(TemplateCode.SIGNIN_ALERT)
+                .param(params)
+                .build();
+        kafkaTemplate.send(KafkaTopic.SEND_NOTIFICATION_GROUP.getTopicName(), mailAlert);
 
         return userMapper.toUserResponse(user);
     }
@@ -83,7 +102,20 @@ public class UserService {
 
     @PreAuthorize("hasRole('ADMIN')")
     public void deleteUser(String userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+        UserProfileResponse userProfileResponse = profileClient.getProfile(userId);
         userRepository.deleteById(userId);
+
+        Map<String, Object> params = SecurityContextUtils.getSecurityContextMap();
+        params.put("username", user.getUsername());
+        params.put("email", userProfileResponse.getEmail());
+        SendNotificationEvent mailAlert = SendNotificationEvent.builder()
+                .channel(Channel.EMAIL.name())
+                .recipient(userProfileResponse.getEmail())
+                .templateCode(TemplateCode.LOCK_USER_ALERT)
+                .param(params)
+                .build();
+        kafkaTemplate.send(KafkaTopic.SEND_NOTIFICATION_GROUP.getTopicName(), mailAlert);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
