@@ -22,8 +22,8 @@ public class UserProfileController {
         return userProfileService.createProfile(request);
     }
 
-    @GetMapping("/users/{profileId}")
-    UserProfileReponse getProfile(@PathVariable String profileId) {
-        return userProfileService.getProfile(profileId);
+    @GetMapping("/users/{customerId}")
+    UserProfileReponse getProfile(@PathVariable String customerId) {
+        return userProfileService.getProfile(customerId);
     }
 }
