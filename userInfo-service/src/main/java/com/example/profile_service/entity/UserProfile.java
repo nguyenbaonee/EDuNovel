@@ -29,5 +29,4 @@ public class UserProfile {
     String firstName;
     String lastName;
     LocalDate dob;
-    String city;
 }

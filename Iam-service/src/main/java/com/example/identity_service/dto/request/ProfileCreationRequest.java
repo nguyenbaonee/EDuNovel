@@ -15,5 +15,4 @@ public class ProfileCreationRequest {
     String firstName;
     String lastName;
     LocalDate dob;
-    String city;
 }

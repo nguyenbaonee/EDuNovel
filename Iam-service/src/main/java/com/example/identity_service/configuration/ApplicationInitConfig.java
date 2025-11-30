@@ -31,7 +31,6 @@ public class ApplicationInitConfig {
     @PostConstruct // hoặc @EventListener(ApplicationReadyEvent.class)
     public void init() {
         log.info("ApplicationInitConfig is starting...");
-        // Thêm logs chi tiết vào quá trình tạo user
     }
 
     PasswordEncoder passwordEncoder;
