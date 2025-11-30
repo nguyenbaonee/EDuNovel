@@ -1,0 +1,43 @@
+package com.example.LMS.entity;
+
+import com.example.LMS.enums.Status;
+import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.Where;
+
+import java.util.List;
+
+@Entity
+@Table(name = "courses")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class Course {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+
+    @Column(nullable = false, length = 150)
+    String name;
+
+    @Column(nullable = false, length = 50, unique = true)
+    String code;
+
+    @OneToMany
+    @Where(clause = "object_type='COURSE' AND type='THUMBNAIL' ")
+    List<Image> thumbnail;
+
+    @Column(columnDefinition = "TEXT")
+    String description;
+
+    @Builder.Default
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    Status status = Status.ACTIVE;
+
+}

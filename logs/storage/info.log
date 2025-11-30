@@ -1,0 +1,549 @@
+15:01:26.120 INFO  c.e.n.NotificationApplication - Starting NotificationApplication using Java 21.0.5 with PID 5948 (/Users/macbookairm3/Documents/EDuNovel/notification/target/classes started by macbookairm3 in /Users/macbookairm3/Documents/EDuNovel)
+15:01:26.121 INFO  c.e.n.NotificationApplication - No active profile set, falling back to 1 default profile: "default"
+15:01:26.858 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+15:01:26.884 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 0 JPA repository interfaces.
+15:01:27.488 INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 3333 (http)
+15:01:27.496 INFO  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-3333"]
+15:01:27.496 INFO  o.a.c.c.StandardService - Starting service [Tomcat]
+15:01:27.496 INFO  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.34]
+15:01:27.529 INFO  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+15:01:27.529 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1391 ms
+15:01:27.744 INFO  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+15:01:27.766 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+15:01:27.837 INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+15:01:27.924 INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2c465259
+15:01:27.926 INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+15:01:28.095 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+15:01:28.298 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+15:01:28.301 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+15:01:29.206 INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+15:01:29.259 INFO  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-3333"]
+15:01:29.267 INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 3333 (http) with context path '/'
+15:01:29.288 INFO  o.a.k.c.c.ConsumerConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-notification-group-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = notification-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+15:01:29.312 INFO  o.a.k.c.t.i.KafkaMetricsCollector - initializing Kafka metrics collector
+15:01:29.350 INFO  o.a.k.c.u.AppInfoParser - Kafka version: 3.7.2
+15:01:29.350 INFO  o.a.k.c.u.AppInfoParser - Kafka commitId: 79a8f2b5f44f9d5a
+15:01:29.350 INFO  o.a.k.c.u.AppInfoParser - Kafka startTimeMs: 1764489689349
+15:01:29.355 INFO  o.a.k.c.c.i.LegacyKafkaConsumer - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Subscribed to topic(s): send-noti-group
+15:01:29.372 INFO  c.e.n.NotificationApplication - Started NotificationApplication in 3.609 seconds (process running for 4.642)
+15:01:29.576 INFO  o.a.k.c.Metadata - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Cluster ID: pvRhDlkCTd-E7gK1mEOJ5A
+15:01:29.580 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+15:01:29.581 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] (Re-)joining group
+15:01:29.618 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Request joining group due to: need to re-join with the given member-id: consumer-notification-group-1-80a6f67d-a8e0-445a-8164-7a465197bf5b
+15:01:29.618 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] (Re-)joining group
+15:01:29.705 INFO  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+15:01:29.705 INFO  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+15:01:29.707 INFO  o.s.w.s.DispatcherServlet - Completed initialization in 2 ms
+15:01:32.702 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Successfully joined group with generation Generation{generationId=9, memberId='consumer-notification-group-1-80a6f67d-a8e0-445a-8164-7a465197bf5b', protocol='range'}
+15:01:32.719 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Finished assignment for group at generation 9: {consumer-notification-group-1-80a6f67d-a8e0-445a-8164-7a465197bf5b=Assignment(partitions=[send-noti-group-0])}
+15:01:32.775 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Successfully synced group in generation Generation{generationId=9, memberId='consumer-notification-group-1-80a6f67d-a8e0-445a-8164-7a465197bf5b', protocol='range'}
+15:01:32.775 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Notifying assignor about the new Assignment(partitions=[send-noti-group-0])
+15:01:32.779 INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Adding newly assigned partitions: send-noti-group-0
+15:01:32.804 INFO  o.a.k.c.c.i.ConsumerUtils - Setting offset for partition send-noti-group-0 to the committed offset FetchPosition{offset=14, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=6}}
+15:01:32.805 INFO  o.s.k.l.KafkaMessageListenerContainer - notification-group: partitions assigned: [send-noti-group-0]
+15:10:29.618 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Node -1 disconnected.
+15:20:29.845 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Node -1 disconnected.
+16:15:27.422 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Disconnecting from node 1 due to request timeout.
+16:15:27.485 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+16:15:27.485 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+16:15:27.494 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Client requested disconnect from node 2147483646
+16:15:27.496 INFO  o.a.k.c.FetchSessionHandler - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Error sending fetch request (sessionId=118277749, epoch=6348) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+16:15:27.584 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+16:33:19.465 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+16:33:19.503 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+16:33:19.503 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Client requested disconnect from node 2147483646
+16:33:19.510 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+16:33:19.510 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+16:33:19.510 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+16:33:19.642 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+16:50:07.524 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Disconnecting from node 1 due to request timeout.
+16:50:07.594 INFO  o.a.k.c.FetchSessionHandler - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Error sending fetch request (sessionId=377572945, epoch=187) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+16:50:07.594 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+16:50:07.594 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+16:50:07.594 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Client requested disconnect from node 2147483646
+16:50:07.608 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+16:50:07.608 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+16:50:07.608 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+16:50:07.719 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+17:07:57.751 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Disconnecting from node 1 due to request timeout.
+17:07:57.752 INFO  o.a.k.c.FetchSessionHandler - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Error sending fetch request (sessionId=610151689, epoch=159) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+17:07:57.752 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+17:07:57.752 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+17:07:57.752 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Client requested disconnect from node 2147483646
+17:07:57.873 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+17:12:47.082 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Disconnecting from node 1 due to request timeout.
+17:12:47.139 INFO  o.a.k.c.FetchSessionHandler - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Error sending fetch request (sessionId=1009464518, epoch=79) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+17:12:47.139 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+17:12:47.139 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+17:12:47.139 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Client requested disconnect from node 2147483646
+17:12:47.148 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+17:12:47.148 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+17:12:47.148 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+17:12:47.241 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+17:29:42.586 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Disconnecting from node 1 due to request timeout.
+17:29:42.649 INFO  o.a.k.c.FetchSessionHandler - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Error sending fetch request (sessionId=1335937678, epoch=184) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+17:29:42.649 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+17:29:42.649 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+17:29:42.649 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Client requested disconnect from node 2147483646
+17:29:42.664 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+17:29:42.664 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+17:29:42.664 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+17:29:42.772 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+18:10:30.630 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Disconnecting from node 1 due to request timeout.
+18:10:30.693 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+18:10:30.696 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+18:10:30.696 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Client requested disconnect from node 2147483646
+18:10:30.696 INFO  o.a.k.c.FetchSessionHandler - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Error sending fetch request (sessionId=1586557674, epoch=2483) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+18:10:30.706 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+18:10:30.706 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+18:10:30.706 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+18:10:30.799 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+19:26:47.505 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+19:26:47.559 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+19:26:47.559 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Client requested disconnect from node 2147483646
+19:26:47.582 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+19:26:47.582 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+19:26:47.582 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+19:26:47.681 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+19:44:07.498 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+19:44:07.542 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+19:44:07.545 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Client requested disconnect from node 2147483646
+19:44:07.595 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+19:51:57.131 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Disconnecting from node 1 due to request timeout.
+19:51:57.132 INFO  o.a.k.c.FetchSessionHandler - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Error sending fetch request (sessionId=1795197047, epoch=6287) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+19:51:57.133 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+19:51:57.133 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+19:51:57.133 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Client requested disconnect from node 2147483646
+19:51:57.247 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+19:53:08.057 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Disconnecting from node 1 due to request timeout.
+19:53:08.057 INFO  o.a.k.c.FetchSessionHandler - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Error sending fetch request (sessionId=2012868208, epoch=15) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+19:53:08.058 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+19:53:08.058 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+19:53:08.058 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Client requested disconnect from node 2147483646
+19:53:12.785 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+21:45:18.753 INFO  c.e.n.NotificationApplication - Starting NotificationApplication using Java 21.0.5 with PID 991 (/Users/macbookairm3/Documents/EDuNovel/notification/target/classes started by macbookairm3 in /Users/macbookairm3/Documents/EDuNovel)
+21:45:18.756 INFO  c.e.n.NotificationApplication - No active profile set, falling back to 1 default profile: "default"
+21:45:22.203 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:45:22.251 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 0 JPA repository interfaces.
+21:45:23.564 INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 3333 (http)
+21:45:23.594 INFO  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-3333"]
+21:45:23.598 INFO  o.a.c.c.StandardService - Starting service [Tomcat]
+21:45:23.598 INFO  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.34]
+21:45:23.684 INFO  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+21:45:23.684 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4856 ms
+21:45:24.269 INFO  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+21:45:24.327 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+21:45:24.502 INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+21:45:24.761 INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@19d9ba89
+21:45:24.764 INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+21:45:25.196 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+21:45:25.618 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+21:45:25.624 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:45:27.212 INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+21:45:27.299 INFO  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-3333"]
+21:45:27.313 INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 3333 (http) with context path '/'
+21:45:27.343 INFO  o.a.k.c.c.ConsumerConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-notification-group-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = notification-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+21:45:27.376 INFO  o.a.k.c.t.i.KafkaMetricsCollector - initializing Kafka metrics collector
+21:45:27.430 INFO  o.a.k.c.u.AppInfoParser - Kafka version: 3.7.2
+21:45:27.430 INFO  o.a.k.c.u.AppInfoParser - Kafka commitId: 79a8f2b5f44f9d5a
+21:45:27.430 INFO  o.a.k.c.u.AppInfoParser - Kafka startTimeMs: 1764513927429
+21:45:27.439 INFO  o.a.k.c.c.i.LegacyKafkaConsumer - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Subscribed to topic(s): send-noti-group
+21:45:27.466 INFO  c.e.n.NotificationApplication - Started NotificationApplication in 10.289 seconds (process running for 17.005)
+21:45:27.703 INFO  o.a.k.c.Metadata - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Cluster ID: pvRhDlkCTd-E7gK1mEOJ5A
+21:45:27.710 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+21:45:27.713 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] (Re-)joining group
+21:45:27.738 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Request joining group due to: need to re-join with the given member-id: consumer-notification-group-1-30a8b8f8-8dfc-4a0f-9f16-3b9633920aef
+21:45:27.738 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] (Re-)joining group
+21:45:27.834 INFO  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+21:45:27.834 INFO  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:45:27.840 INFO  o.s.w.s.DispatcherServlet - Completed initialization in 6 ms
+21:45:30.760 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Successfully joined group with generation Generation{generationId=11, memberId='consumer-notification-group-1-30a8b8f8-8dfc-4a0f-9f16-3b9633920aef', protocol='range'}
+21:45:30.769 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Finished assignment for group at generation 11: {consumer-notification-group-1-30a8b8f8-8dfc-4a0f-9f16-3b9633920aef=Assignment(partitions=[send-noti-group-0])}
+21:45:30.805 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Successfully synced group in generation Generation{generationId=11, memberId='consumer-notification-group-1-30a8b8f8-8dfc-4a0f-9f16-3b9633920aef', protocol='range'}
+21:45:30.805 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Notifying assignor about the new Assignment(partitions=[send-noti-group-0])
+21:45:30.807 INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Adding newly assigned partitions: send-noti-group-0
+21:45:30.823 INFO  o.a.k.c.c.i.ConsumerUtils - Setting offset for partition send-noti-group-0 to the committed offset FetchPosition{offset=14, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=6}}
+21:45:30.824 INFO  o.s.k.l.KafkaMessageListenerContainer - notification-group: partitions assigned: [send-noti-group-0]
+21:47:31.959 INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Revoke previously assigned partitions send-noti-group-0
+21:47:31.963 INFO  o.s.k.l.KafkaMessageListenerContainer - notification-group: partitions revoked: [send-noti-group-0]
+21:47:31.967 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Member consumer-notification-group-1-30a8b8f8-8dfc-4a0f-9f16-3b9633920aef sending LeaveGroup request to coordinator localhost:9092 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+21:47:31.971 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+21:47:31.971 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+21:47:31.971 INFO  o.a.k.c.c.i.LegacyKafkaConsumer - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Unsubscribed all topics or patterns and assigned partitions
+21:47:31.977 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+21:47:31.977 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+21:47:32.444 INFO  o.a.k.c.m.Metrics - Metrics scheduler closed
+21:47:32.444 INFO  o.a.k.c.m.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+21:47:32.444 INFO  o.a.k.c.m.Metrics - Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+21:47:32.444 INFO  o.a.k.c.m.Metrics - Metrics reporters closed
+21:47:32.455 INFO  o.a.k.c.u.AppInfoParser - App info kafka.consumer for consumer-notification-group-1 unregistered
+21:47:32.465 INFO  o.s.k.l.KafkaMessageListenerContainer - notification-group: Consumer stopped
+21:47:32.496 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:47:32.500 INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+21:47:32.508 INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+22:11:35.931 INFO  c.e.n.NotificationApplication - Starting NotificationApplication using Java 21.0.5 with PID 20390 (/Users/macbookairm3/Documents/EDuNovel/notification/target/classes started by macbookairm3 in /Users/macbookairm3/Documents/EDuNovel)
+22:11:35.934 INFO  c.e.n.NotificationApplication - No active profile set, falling back to 1 default profile: "default"
+22:11:39.131 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+22:11:39.272 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 94 ms. Found 0 JPA repository interfaces.
+22:11:41.129 INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 3333 (http)
+22:11:41.159 INFO  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-3333"]
+22:11:41.162 INFO  o.a.c.c.StandardService - Starting service [Tomcat]
+22:11:41.162 INFO  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.34]
+22:11:41.289 INFO  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+22:11:41.291 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5242 ms
+22:11:42.262 INFO  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+22:11:42.324 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+22:11:42.597 INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+22:11:43.051 INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5c316230
+22:11:43.062 INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+22:11:43.804 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+22:11:44.637 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+22:11:44.644 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+22:11:47.952 INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+22:11:48.104 INFO  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-3333"]
+22:11:48.137 INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 3333 (http) with context path '/'
+22:11:48.278 INFO  o.a.k.c.c.ConsumerConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-notification-group-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = notification-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+22:11:48.404 INFO  o.a.k.c.t.i.KafkaMetricsCollector - initializing Kafka metrics collector
+22:11:48.500 INFO  o.a.k.c.u.AppInfoParser - Kafka version: 3.7.2
+22:11:48.501 INFO  o.a.k.c.u.AppInfoParser - Kafka commitId: 79a8f2b5f44f9d5a
+22:11:48.501 INFO  o.a.k.c.u.AppInfoParser - Kafka startTimeMs: 1764515508499
+22:11:48.513 INFO  o.a.k.c.c.i.LegacyKafkaConsumer - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Subscribed to topic(s): send-noti-group
+22:11:48.547 INFO  c.e.n.NotificationApplication - Started NotificationApplication in 13.571 seconds (process running for 16.744)
+22:11:48.866 INFO  o.a.k.c.Metadata - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Cluster ID: pvRhDlkCTd-E7gK1mEOJ5A
+22:11:48.869 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+22:11:48.871 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] (Re-)joining group
+22:11:48.904 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Request joining group due to: need to re-join with the given member-id: consumer-notification-group-1-13a9ceb0-7b0c-4f65-ad0d-b8fbb399818e
+22:11:48.904 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] (Re-)joining group
+22:11:51.941 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Successfully joined group with generation Generation{generationId=13, memberId='consumer-notification-group-1-13a9ceb0-7b0c-4f65-ad0d-b8fbb399818e', protocol='range'}
+22:11:51.951 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Finished assignment for group at generation 13: {consumer-notification-group-1-13a9ceb0-7b0c-4f65-ad0d-b8fbb399818e=Assignment(partitions=[send-noti-group-0])}
+22:11:52.012 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Successfully synced group in generation Generation{generationId=13, memberId='consumer-notification-group-1-13a9ceb0-7b0c-4f65-ad0d-b8fbb399818e', protocol='range'}
+22:11:52.012 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Notifying assignor about the new Assignment(partitions=[send-noti-group-0])
+22:11:52.015 INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Adding newly assigned partitions: send-noti-group-0
+22:11:52.034 INFO  o.a.k.c.c.i.ConsumerUtils - Setting offset for partition send-noti-group-0 to the committed offset FetchPosition{offset=14, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=6}}
+22:11:52.035 INFO  o.s.k.l.KafkaMessageListenerContainer - notification-group: partitions assigned: [send-noti-group-0]
+22:20:49.225 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Node -1 disconnected.
+22:30:48.975 INFO  o.a.k.c.NetworkClient - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Node -1 disconnected.
+22:31:07.315 INFO  c.e.n.a.s.s.EmailService - Template email 'signin-alert' đã gửi thành công đến: datphan1406f2003@gmail.com
+23:13:56.802 INFO  c.e.n.a.s.s.EmailService - Template email 'signin-alert' đã gửi thành công đến: datphan14062k3@gmail.com
+23:14:25.289 INFO  c.e.n.a.s.s.EmailService - Template email 'login-alert' đã gửi thành công đến: datphan14062k3@gmail.com
+23:22:39.123 INFO  c.e.n.a.s.s.EmailService - Template email 'login-alert' đã gửi thành công đến: datphan14062k3@gmail.com
+23:30:23.463 INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Revoke previously assigned partitions send-noti-group-0
+23:30:23.469 INFO  o.s.k.l.KafkaMessageListenerContainer - notification-group: partitions revoked: [send-noti-group-0]
+23:30:23.471 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Member consumer-notification-group-1-13a9ceb0-7b0c-4f65-ad0d-b8fbb399818e sending LeaveGroup request to coordinator localhost:9092 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+23:30:23.478 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+23:30:23.478 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+23:30:23.478 INFO  o.a.k.c.c.i.LegacyKafkaConsumer - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Unsubscribed all topics or patterns and assigned partitions
+23:30:23.493 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+23:30:23.493 INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-notification-group-1, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+23:30:24.060 INFO  o.a.k.c.m.Metrics - Metrics scheduler closed
+23:30:24.060 INFO  o.a.k.c.m.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+23:30:24.060 INFO  o.a.k.c.m.Metrics - Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+23:30:24.060 INFO  o.a.k.c.m.Metrics - Metrics reporters closed
+23:30:24.080 INFO  o.a.k.c.u.AppInfoParser - App info kafka.consumer for consumer-notification-group-1 unregistered
+23:30:24.091 INFO  o.s.k.l.KafkaMessageListenerContainer - notification-group: Consumer stopped
+23:30:24.123 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+23:30:24.129 INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+23:30:24.133 INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+23:35:54.659 INFO  c.e.n.NotificationApplication - Starting NotificationApplication using Java 21.0.5 with PID 84576 (/Users/macbookairm3/Documents/EDuNovel/notification/target/classes started by macbookairm3 in /Users/macbookairm3/Documents/EDuNovel)
+23:35:54.662 INFO  c.e.n.NotificationApplication - No active profile set, falling back to 1 default profile: "default"
+23:35:57.205 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+23:35:57.241 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.

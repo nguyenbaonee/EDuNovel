@@ -8,6 +8,9 @@ spring:
     password: iampass
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  application:
+    name: identity-service
+
   # ==========================
   # JPA / Hibernate
   # ==========================
@@ -53,3 +56,23 @@ jwt:
   signerKey: devteria-super-secret-key-123456
   valid-duration: 3600
   refreshable-duration: 604800
+
+# Eureka Client Configuration
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+
+# Feign Configuration
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 5000
+        read-timeout: 5000
+        logger-level: basic
