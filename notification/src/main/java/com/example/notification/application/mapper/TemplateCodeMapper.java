@@ -1,8 +1,10 @@
 package com.example.notification.application.mapper;
 
-import com.example.common.enums.TemplateCode;
-import lombok.Getter;
 import org.springframework.stereotype.Component;
+
+import com.example.common.enums.TemplateCode;
+
+import lombok.Getter;
 
 @Component
 @Getter

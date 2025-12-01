@@ -1,11 +1,11 @@
 package com.example.notification.application.service;
 
-import com.example.common.enums.Channel;
-import com.example.common.event.SendNotificationEvent;
-import com.example.notification.application.mapper.TemplateCodeMapper;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
+import com.example.common.enums.Channel;
+import com.example.common.event.SendNotificationEvent;
+import com.example.notification.application.mapper.TemplateCodeMapper;
 import com.example.notification.application.service.send.EmailService;
 
 import lombok.RequiredArgsConstructor;

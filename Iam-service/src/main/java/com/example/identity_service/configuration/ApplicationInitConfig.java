@@ -2,6 +2,8 @@ package com.example.identity_service.configuration;
 
 import java.util.HashSet;
 
+import com.example.identity_service.dto.request.ProfileCreationRequest;
+import com.example.identity_service.repository.httpclient.ProfileClient;
 import jakarta.annotation.PostConstruct;
 
 import org.springframework.boot.ApplicationRunner;
@@ -28,12 +30,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ApplicationInitConfig {
 
+    final ProfileClient profileClient;
+
     @PostConstruct // hoặc @EventListener(ApplicationReadyEvent.class)
     public void init() {
         log.info("ApplicationInitConfig is starting...");
     }
 
-    PasswordEncoder passwordEncoder;
+    final PasswordEncoder passwordEncoder;
 
     @NonFinal
     static final String ADMIN_USER_NAME = "admin";
@@ -70,6 +74,11 @@ public class ApplicationInitConfig {
                         .build();
 
                 userRepository.save(user);
+                ProfileCreationRequest profileRequest = new ProfileCreationRequest();
+                profileRequest.setUserId(user.getId());
+                profileRequest.setFirstName(ADMIN_USER_NAME);
+                profileRequest.setEmail("admin@domain.com"); // set email mặc định
+                profileClient.createProfile(profileRequest);
                 log.warn("admin user has been created with default password: admin, please change it");
             }
             log.info("Application initialization completed .....");
