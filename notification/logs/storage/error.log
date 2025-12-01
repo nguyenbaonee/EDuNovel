@@ -1,0 +1,6 @@
+16:46:49.483 ERROR o.h.e.j.s.SqlExceptionHelper - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+17:30:35.457 ERROR o.h.e.j.s.SqlExceptionHelper - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.

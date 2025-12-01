@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: notification-service
+  datasource:
+    url: ${DBMS_CONNECTION:jdbc:mysql://localhost:3306/notification_db?useSSL=false&serverTimezone=UTC
+    username: ${DBMS_USERNAME:root}
+    password: ${DBMS_PASSWORD:12345678}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:agentcodetrial1@gmail.com}
+    password: ${MAIL_PASSWORD:nteyqguizixlwgvz}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: notification-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+
+  doc:
+    swagger-ui:
+      path: /swagger-doc/notification/swagger-ui.html
+    api-docs:
+      path: /swagger-doc/v3/api-docs/notification
+
+server:
+  port: 3333
