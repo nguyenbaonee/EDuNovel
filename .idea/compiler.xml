@@ -39,7 +39,7 @@
         <module name="common" />
         <module name="Iam-service" />
       </profile>
-      <profile name="Annotation profile for LMS" enabled="true">
+      <profile name="Annotation profile for Merged Service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -49,6 +49,7 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
         </processorPath>
+        <module name="merged-service" />
         <module name="Banner" />
         <module name="LMS" />
       </profile>
@@ -62,6 +63,7 @@
       <module name="api-gateway" options="-parameters" />
       <module name="common" options="-parameters -Amapstruct.suppressGeneratorTimestamp=true -Amapstruct.defaultComponentModel=spring -Amapstruct.verbose=true" />
       <module name="eureka-server" options="-parameters" />
+      <module name="merged-service" options="-parameters" />
       <module name="notification" options="-parameters" />
       <module name="product-service" options="-parameters" />
       <module name="userInfo-service" options="-parameters -Amapstruct.suppressGeneratorTimestamp=true -Amapstruct.defaultComponentModel=spring -Amapstruct.verbose=true" />

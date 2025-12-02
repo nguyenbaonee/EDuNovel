@@ -24,25 +24,12 @@ public class CartController {
     /**
      * Lấy giỏ hàng của user hiện tại
      */
-@GetMapping
-public ResponseEntity<ApiResponse<CartResponse>> getCurrentUserCart(HttpServletRequest httpRequest) {
-    log.info("=== GET CURRENT USER CART ===");
-    
-    // Debug tất cả headers
-    log.info("=== REQUEST HEADERS ===");
-    httpRequest.getHeaderNames().asIterator().forEachRemaining(headerName -> {
-        log.info("  {}: {}", headerName, httpRequest.getHeader(headerName));
-    });
-    
-    // Debug SecurityContext
-    var auth = SecurityContextHolder.getContext().getAuthentication();
-    log.info("=== SECURITY CONTEXT ===");
-    log.info("Authentication: {}", auth);
-    log.info("Principal: {}", auth != null ? auth.getName() : "null");
-    log.info("Is Authenticated: {}", auth != null && auth.isAuthenticated());
+    @GetMapping("by-user/{userId}")
+    public ResponseEntity<ApiResponse<CartResponse>> getCurrentUserCart(HttpServletRequest httpRequest,
+                                                                        @PathVariable String userId) {
     
     try {
-        CartResponse cart = cartService.getCurrentUserCart();
+        CartResponse cart = cartService.getCurrentUserCart(userId);
         
         return ResponseEntity.ok(ApiResponse.<CartResponse>builder()
                 .code(1000)
@@ -65,14 +52,6 @@ public ResponseEntity<ApiResponse<CartResponse>> getCurrentUserCart(HttpServletR
     @PostMapping("/items")
     public ResponseEntity<ApiResponse<CartResponse>> addItemToCart(
             @RequestBody @Valid AddItemRequest request) {
-        
-        log.info("=== ADD ITEM TO CART ===");
-        log.info("Request: {}", request);
-        
-        // Debug SecurityContext
-        var auth = SecurityContextHolder.getContext().getAuthentication();
-        log.info("Authentication: {}", auth);
-        log.info("Principal: {}", auth != null ? auth.getName() : "null");
         
         try {
             CartResponse cart = cartService.addItemToCart(request);
@@ -124,15 +103,16 @@ public ResponseEntity<ApiResponse<CartResponse>> getCurrentUserCart(HttpServletR
     /**
      * Xóa sản phẩm khỏi giỏ hàng
      */
-    @DeleteMapping("/items/{productId}")
+    @DeleteMapping("/{userId}/items/{productId}")
     public ResponseEntity<ApiResponse<String>> removeItemFromCart(
-            @PathVariable String productId) {
+            @PathVariable String userId,
+            @PathVariable Long productId) {
         
         log.info("=== REMOVE ITEM FROM CART ===");
         log.info("ProductId: {}", productId);
         
         try {
-            cartService.removeItemFromCart(productId);
+            cartService.removeItemFromCart(userId, productId);
             
             return ResponseEntity.ok(ApiResponse.<String>builder()
                     .code(1000)
@@ -152,12 +132,12 @@ public ResponseEntity<ApiResponse<CartResponse>> getCurrentUserCart(HttpServletR
     /**
      * Xóa toàn bộ giỏ hàng
      */
-    @DeleteMapping
-    public ResponseEntity<ApiResponse<String>> clearCart() {
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<ApiResponse<String>> clearCart(@PathVariable String userId) {
         log.info("=== CLEAR CART ===");
         
         try {
-            cartService.clearCart();
+            cartService.clearCart(userId);
             
             return ResponseEntity.ok(ApiResponse.<String>builder()
                     .code(1000)

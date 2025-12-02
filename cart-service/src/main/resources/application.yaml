@@ -28,6 +28,9 @@ eureka:
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${server.port}
+app:
+  services:
+    product: http://localhost:8089
 
 # Feign Configuration
 feign:

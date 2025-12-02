@@ -1,0 +1,94 @@
+server:
+  port: 8092
+
+app:
+  api-prefix: /api/v1
+
+jwt:
+  signerKey: "devteria-super-secret-key-123456"
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8766/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:5173"
+              - "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+      routes:
+        - id: iam-service
+          uri: lb://iam-service
+          predicates:
+            - Path=${app.api-prefix}/iam/**
+          filters:
+            - StripPrefix=3
+
+        - id: payment_service
+          uri: lb://payment-service
+          predicates:
+            - Path=${app.api-prefix}/payment/**
+          filters:
+            - StripPrefix=3
+            - name: JwtAuthenticationFilter
+
+        - id: cart_service
+          uri: lb://cart-service
+          predicates:
+            - Path=${app.api-prefix}/carts/**
+          filters:
+            - StripPrefix=3
+            - name: JwtAuthenticationFilter
+
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=${app.api-prefix}/orders/**
+          filters:
+            - StripPrefix=3
+            - name: JwtAuthenticationFilter
+
+        - id: course_service
+          uri: lb://course_service
+          predicates:
+            - Path=${app.api-prefix}/course/**
+          filters:
+            - StripPrefix=3
+
+        - id: profile_service
+          uri: lb://profile-service
+          predicates:
+            - Path=${app.api-prefix}/profile/**
+          filters:
+            - StripPrefix=3
+            - name: JwtAuthenticationFilter
+
+        - id: rating_service
+          uri: lb://rating-service
+          predicates:
+            - Path=${app.api-prefix}/ratings/**
+          filters:
+            - StripPrefix=3
+            - name: JwtAuthenticationFilter

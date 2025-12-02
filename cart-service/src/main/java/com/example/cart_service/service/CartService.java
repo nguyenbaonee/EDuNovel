@@ -1,9 +1,11 @@
 package com.example.cart_service.service;
 
+import com.example.cart_service.ProductResponseMapper;
 import com.example.cart_service.client.ProductFeignClient;
 import com.example.cart_service.dto.request.AddItemRequest;
 import com.example.cart_service.dto.response.CartItemResponse;
 import com.example.cart_service.dto.response.CartResponse;
+import com.example.cart_service.dto.response.CourseResponse;
 import com.example.cart_service.dto.response.ProductResponse;
 import com.example.cart_service.entity.Cart;
 import com.example.cart_service.entity.CartItem;
@@ -30,7 +32,7 @@ import java.util.stream.Collectors;
 public class CartService {
     private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
-    private final ProductFeignClient productFeignClient; 
+    private final ProductFeignClient productFeignClient;
 
     /**
      * Lấy userId từ SecurityContext (được set bởi UserContextFilter)
@@ -50,8 +52,7 @@ public class CartService {
      * Lấy giỏ hàng của user hiện tại (từ SecurityContext)
      */
     @Transactional(readOnly = true)
-    public CartResponse getCurrentUserCart() {
-        String userId = getCurrentUserId();
+    public CartResponse getCurrentUserCart(String userId) {
         log.info("Getting cart for userId: {}", userId);
         
         Cart cart = cartRepository.findByUserId(userId)
@@ -63,20 +64,17 @@ public class CartService {
     
     @Transactional
     public CartResponse addItemToCart(AddItemRequest request) {
-        String userId = getCurrentUserId();
-        log.info("=== ADDING ITEM TO CART ===");
-        log.info("UserId: {}", userId);
-        log.info("ProductId: {}", request.getCourseId());
-        log.info("Quantity: {}", request.getQuantity());
 
-        // Fetch product information
         ProductResponse product = null;
         try {
             log.info("Calling productFeignClient.getProduct()");
             var response = productFeignClient.getProduct(request.getCourseId());
             
             if (response != null && response.getResult() != null) {
-                product = response.getResult();
+                CourseResponse courseResponse = response.getResult();
+
+                // Chuyển đổi CourseResponse thành ProductResponse
+                product = ProductResponseMapper.toProductResponse(courseResponse);
                 log.info("Product fetched successfully: {}", product.getName());
             } else {
                 log.error("Product response is null");
@@ -105,8 +103,8 @@ public class CartService {
         }
 
         // Get or create cart
-        Cart cart = cartRepository.findByUserId(userId)
-                .orElse(Cart.builder().userId(userId).items(new ArrayList<>()).build());
+        Cart cart = cartRepository.findByUserId(request.getUserId())
+                .orElse(Cart.builder().userId(request.getUserId()).items(new ArrayList<>()).build());
 
         // Check if item already exists in cart
         Optional<CartItem> existingItem = cart.getItems().stream()
@@ -164,9 +162,7 @@ public class CartService {
      * Xóa sản phẩm khỏi giỏ hàng của user hiện tại
      */
     @Transactional
-    public void removeItemFromCart(String productId) {
-        String userId = getCurrentUserId();
-        log.info("Removing item from cart for userId: {}, productId: {}", userId, productId);
+    public void removeItemFromCart(String userId, Long productId) {
         
         Cart cart = cartRepository.findByUserId(userId)
                 .orElseThrow(() -> new RuntimeException("Cart not found"));
@@ -186,8 +182,7 @@ public class CartService {
      * Xóa toàn bộ giỏ hàng của user hiện tại
      */
     @Transactional
-    public void clearCart() {
-        String userId = getCurrentUserId();
+    public void clearCart(String userId) {
         log.info("Clearing cart for userId: {}", userId);
         
         Cart cart = cartRepository.findByUserId(userId)
@@ -221,7 +216,8 @@ public class CartService {
         try {
              var response = productFeignClient.getProduct(item.getCourseId());
             if (response != null && response.getResult() != null) {
-                product = response.getResult();
+                CourseResponse courseResponse = response.getResult();
+                product = ProductResponseMapper.toProductResponse(courseResponse);
             }
         } catch (Exception e) {
             log.error("Error fetching product for cart item: {}", e.getMessage());
